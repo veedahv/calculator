@@ -1,0 +1,114 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Harmattan&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.btn {
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.main {
+    width: 100vw;
+    height: 100vh;
+    /* background: rgb(250, 227, 197); */
+}
+
+.calculator-container {
+    margin: auto;
+    max-width: 370px;
+    height: 100%;
+    background: rgb(255, 234, 203);
+    padding: 10px 5px;
+}
+
+.calculator-body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding-top: 30px;
+}
+
+.calculator-top {
+    flex-grow: 1;
+    padding: 20px 15px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.calculator-screen {
+    text-align: right;
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    color: #A07763;
+}
+
+.screen-input {
+    font-size: 28px;
+}
+
+.screen-output {
+    font-size: 18px;
+}
+
+.calculator-middle {
+    padding: 20px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+
+.calculator-divide {
+    border: none;
+    height: 1px;
+    width: 100%;
+    background: rgb(168, 130, 79);
+}
+
+.calculator-keys {
+    display: grid;
+    grid-template-columns:  repeat(4, 1fr);
+    gap: 15px;
+    padding: 20px 5px;
+}
+
+.main-keys {
+    border-radius: 100px;
+    padding: 10px;
+    background: rgb(255, 226, 174);
+    font-size: 24px;
+    font-weight: 500;
+    color: rgb(144, 108, 46);
+    /* font-family: 'Harmattan', sans-serif; */
+}
+
+
+.operation-keys {
+    color: rgb(203, 129, 26);
+}
+
+.equal-btn {
+    background: rgb(45, 150, 135);
+    color: rgb(255, 234, 203);
+}
+
+.clear-btn {
+    color: rgb(231, 92, 85);
+}
+
+.backspace-btn {
+    font-size: 20px;
+    color: rgb(45, 150, 135);
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">    
+    <script src="https://kit.fontawesome.com/3ad8d4fbe1.js" crossorigin="anonymous"></script>
+    <title>Calculator</title>
+</head>
+<body>
+    <main class="main">
+        <div class="calculator-container">
+            <div class="calculator-body">
+                <div class="calculator-top">
+                    <div class="calculator-input">
+                        <!-- <input type="text" class="calculator-screen screen-input" id="screen-input-field" value="258+34&#247;8"> -->
+                        <textarea class="calculator-screen screen-input" id="screen-input" cols="30" rows="3">258+34&#247;6</textarea>
+                    </div>
+                    <div class="calculator-output">
+                        <input type="text" class="calculator-screen screen-output" id="screen-output" value="-278" disabled>
+                    </div>
+                </div>
+                <div class="calculator-middle">
+                    <div class="">
+                        <button class="btn operation-keys backspace-btn" data-action="backspace">
+                            <i class="fas fa-backspace"></i>
+                        </button>
+                    </div>
+                </div>
+                <hr class="calculator-divide">
+                <div class="calculator-bottom">
+                    <div class="calculator-keys">
+                        <button class="btn main-keys operation-keys clear-btn" data-action="clear" id="clear-btn">C</button>
+                        <button class="btn main-keys operation-keys" data-action="bracket" id="bracket-btn">( )</button>
+                        <button class="btn main-keys operation-keys" data-action="percent">
+                            <!-- % -->
+                            &#37;
+                        </button>
+                        <button class="btn main-keys operation-keys" data-action="divide">
+                            <!-- <i class="fas fa-divide"></i> -->
+                            &#247;
+                        </button>
+                        <button class="btn main-keys numerical-keys">7</button>
+                        <button class="btn main-keys numerical-keys">8</button>
+                        <button class="btn main-keys numerical-keys">9</button>
+                        <button class="btn main-keys operation-keys" data-action="multiply">
+                            <!-- <i class="fas fa-times"></i> -->
+                            &#215;
+                        </button>
+                        <button class="btn main-keys numerical-keys">4</button>
+                        <button class="btn main-keys numerical-keys">5</button>
+                        <button class="btn main-keys numerical-keys">6</button>
+                        <button class="btn main-keys operation-keys" data-action="subtract">
+                            <!-- <i class="fas fa-minus"></i> -->
+                            &#8722;
+                        </button>
+                        <button class="btn main-keys numerical-keys">1</button>
+                        <button class="btn main-keys numerical-keys">2</button>
+                        <button class="btn main-keys numerical-keys">3</button>
+                        <button class="btn main-keys operation-keys" data-action="add">
+                            <!-- <i class="fas fa-plus"></i> -->
+                            &#43;
+                        </button>
+                        <button class="btn main-keys numerical-keys" data-action="negation">
+                            <div class="plus-minus-symbol">&#43;/&#8722;</div>
+                        </button>
+                        <button class="btn main-keys numerical-keys">0</button>
+                        <button class="btn main-keys numerical-keys" data-action="decimal">&#8901;</button>
+                        <button class="btn main-keys operation-keys equal-btn" data-action="equate">
+                            &#61;
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="./js/script.js"></script>
+</body>
+</html>
