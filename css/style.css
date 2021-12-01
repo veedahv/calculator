@@ -29,6 +29,27 @@
     padding: 10px 5px;
 }
 
+.toast {
+    position: fixed;
+    background-color: rgba(0, 0, 0, .5);
+    border-radius: 15px;
+    padding: 5px 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ffffff;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 200;
+    letter-spacing: 1px;
+    bottom: 10%;
+    display: none;
+    /* font-family: 'Harmattan', sans-serif; */
+}
+
+.toast.show {
+    display: block;
+}
+
 .calculator-body {
     display: flex;
     flex-direction: column;
