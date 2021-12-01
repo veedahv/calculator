@@ -90,7 +90,6 @@
 }
 
 .screen-input::-webkit-scrollbar-thumb {
-    /* width: 3px; */
     background: rgb(203, 129, 26);
     border-radius: 5px;
 }

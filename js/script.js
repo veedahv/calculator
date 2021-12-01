@@ -12,6 +12,11 @@ const showToast = (mssg) => {
         toast.classList.remove('show');
     }, 500);
 }
+const getValuePosition = (str, position) => {
+    const n = str.substring(position).match(/^[0-9]+/);
+    const p = str.substring(0, position).match(/[0-9]+$/);
+    return !p && !n ? '' : (p || '') + (n || '');
+}
 const getCalcOperation = (newOperation) => {
     calcOperation = newOperation.split('+').join('+').split('−').join('-').split('×').join('*').split('÷').join('/').split('%').join('/100');
     let noOfOpenBrackets = calcOperation.replace(/[^(]/g, "").length;
@@ -45,7 +50,6 @@ const addNewValue = (newOperand) => {
         let newOperation = currentOperationArray.join("");
         getCalcOperation(newOperation);
         inputSelectionStart += newOperand.length;
-        console.log(newOperand.length);
         screenInput.innerHTML = newOperation;
         screenInput.focus();
         screenInput.selectionStart = inputSelectionStart;
@@ -58,7 +62,6 @@ operationKeys.forEach(operationKey => {
             screenInput.innerText = '';
         } else if (operationKey.dataset.action === 'equate') {
             try {
-                console.log(eval(calcOperation));
                 screenInput.innerText = eval(calcOperation);
             } catch (e) {
                 if (e instanceof SyntaxError) {
@@ -114,23 +117,14 @@ operationKeys.forEach(operationKey => {
         }
     })
 });
-function getValuePosition(str, position) {
-    const n = str.substring(position).match(/^[0-9]+/);
-    const p = str.substring(0, position).match(/[0-9]+$/);
-    return !p && !n ? '' : (p || '') + (n || '');
-}
 numericalKeys.forEach(numericalKey => {
     numericalKey.addEventListener('click', () => {
         let inputSelectionStart = screenInput.selectionStart;
         let currentOperation = screenInput.innerHTML;
         let currentOperationArray = currentOperation.split("");
-        console.log(screenInput.innerHTML);
-        console.log(screenInput.selectionStart);
         let selectValue = getValuePosition(screenInput.innerHTML, screenInput.selectionStart);
         if (numericalKey.dataset.action === 'negation') {
             let valueIndex = currentOperation.indexOf(selectValue);
-            console.log(currentOperationArray);
-            console.log(valueIndex);
             let prevValues = (selectValue === '') ? currentOperationArray.slice(inputSelectionStart - 2, inputSelectionStart).join('') : currentOperationArray.slice(valueIndex - 2, valueIndex).join('');
             if (prevValues === '(−') {
                 (selectValue === '') ? currentOperationArray.splice(inputSelectionStart - 2, 2, '') : currentOperationArray.splice(valueIndex - 2, 2, '');
