@@ -5,26 +5,26 @@ const screenOutput = document.querySelector('#screen-output');
 const toast = document.querySelector('#toast');
 let calcOperation;
 let noOfMissingBrackets = 0;
-const showToast = (mssg) => {
+const showToast = mssg => {
     toast.textContent = mssg;
     toast.classList.add('show');
     setTimeout(() => {
         toast.classList.remove('show');
-    }, 500);
+    }, 1000);
 }
 const getValuePosition = (str, position) => {
-    const n = str.substring(position).match(/^[0-9]+/);
-    const p = str.substring(0, position).match(/[0-9]+$/);
+    const n = str.substring(position).match(/^[0-9.]+/);
+    const p = str.substring(0, position).match(/[0-9.]+$/);
     return !p && !n ? '' : (p || '') + (n || '');
 }
-const getCalcOperation = (newOperation) => {
+const getCalcOperation = newOperation => {
     calcOperation = newOperation.split('+').join('+').split('−').join('-').split('×').join('*').split('÷').join('/').split('%').join('/100');
     let noOfOpenBrackets = calcOperation.replace(/[^(]/g, "").length;
     let noOfClosedBrackets = calcOperation.replace(/[^)]/g, "").length;
     noOfMissingBrackets = noOfOpenBrackets - noOfClosedBrackets;
     calcOperation = calcOperation + ')'.repeat(noOfMissingBrackets);
 }
-const addNewValue = (newOperand) => {
+const addNewValue = newOperand => {
     if (screenInput.innerHTML.length > 200) {
         showToast("Can't enter more than 200 characters");
     } else {
@@ -43,7 +43,7 @@ const addNewValue = (newOperand) => {
         } else if (re.test(nextValue) && re.test(newOperand)) {
             valueReplaced = 1;
         }
-        if (reg.test(prevValue) && !re.test(newOperand)) {
+        if (reg.test(prevValue) && !reg.test(newOperand) && !re.test(newOperand)) {
             newOperand = '×' + newOperand;
         }
         currentOperationArray.splice(inputSelectionStart, valueReplaced, newOperand);
@@ -78,7 +78,6 @@ operationKeys.forEach(operationKey => {
             currentOperationArray.splice(inputSelectionStart, valueReplaced);
             let newOperation = currentOperationArray.join("");
             getCalcOperation(newOperation);
-            inputSelectionStart;
             screenInput.innerHTML = newOperation;
             screenInput.focus();
             screenInput.selectionStart = inputSelectionStart;
@@ -106,11 +105,7 @@ operationKeys.forEach(operationKey => {
                 }
             } else {
                 let re = new RegExp('^[0-9]$');
-                if (re.test(prevValue)) {
-                    addNewValue('×(');
-                } else {
-                    addNewValue('(');
-                }
+                (re.test(prevValue)) ? addNewValue('×(') : addNewValue('(');
             }
         } else {
             addNewValue(operationKey.innerText);
@@ -138,9 +133,7 @@ numericalKeys.forEach(numericalKey => {
             screenInput.focus();
             screenInput.selectionStart = inputSelectionStart;
         } else if (numericalKey.dataset.action === 'decimal') {
-            if (!selectValue.includes('.')) {
-                addNewValue('.');
-            }
+            if (!selectValue.includes('.')) addNewValue('.');
             screenInput.focus();
         } else {
             addNewValue(numericalKey.innerText);
